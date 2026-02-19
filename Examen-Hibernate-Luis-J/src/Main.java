@@ -35,5 +35,27 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        // DELETE - Eliminar una línea
+            System.out.println("5. DELETE - Eliminar línea ID=" + primeraLineaId + ":");
+            eliminarLineaPedido(primeraLineaId);
+            System.out.println("✓ Línea eliminada\n");
+
+            // LIST - Final
+            System.out.println("6. LIST - Líneas restantes:");
+            List<PedidoLinea> lineasFinales = listarLineasPorPedido(2L);
+            if (!lineasFinales.isEmpty()) {
+                for (PedidoLinea linea : lineasFinales) {
+                    System.out.println("   [ID: " + linea.getId() + "] " + linea.getProducto() +
+                            " | Cantidad: " + linea.getCantidad());
+                }
+            } else {
+                System.out.println("   No hay líneas para este pedido");
+            }
+        }
+        System.out.println("1. INSERT - Crear nuevas líneas para Pedido ID=2:");
+        crearPedidoLinea(2L, "Monitor 27\"", 2, new BigDecimal("299.99"));
+        crearPedidoLinea(2L, "Teclado Mecánico", 1, new BigDecimal("129.99"));
+        crearPedidoLinea(2L, "Mouse Inalámbrico", 3, new BigDecimal("49.99"));
+        System.out.println("✓ Líneas creadas\n");
     }
 }
